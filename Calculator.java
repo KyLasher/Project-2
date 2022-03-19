@@ -8,24 +8,23 @@ public class Calculator {
             String postfix = new String();
             for(char nextCharacter : infix){
                 switch(nextcharacter){
-
-                    case 'a': case 'b': case 'c': case 'd': case 'e':
+                    case 'a': case 'b': case 'c': case 'd': case 'e':   //Different letter cases
                         postfix.append(nextCharacter);
                         break;
-                    case '^':
+                    case '^':   //for cases where to the power of is used
                         operatorStack.push(nextCharacter);
                         break;
-                    case '+': case '-': case '*': case '/':
+                    case '+': case '-': case '*': case '/': //for cases where add, sub, multiply, and divide are used
                         while(!operatorStack.isEmpty() && nextCharacter[] <= operatorStack.peek()){
-                        postfix.append(operatorStack.peek());
-                        operatorStack.pop();
-                    }
-                    operatorStack.push(nextCharacter);
-                    break;
-                    case '(':
+                            postfix.append(operatorStack.peek());
+                            operatorStack.pop();
+                        }
                         operatorStack.push(nextCharacter);
                         break;
-                    case ')':
+                    case '(':   //for cases where the left hand paranthesis is used
+                        operatorStack.push(nextCharacter);
+                        break;
+                    case ')':   //for cases where the right hand paranthesis is used
                         topOperator = operatorStack.pop();
                         while(topOperator != '('){
                             postfix.append(topOperator);
@@ -36,8 +35,8 @@ public class Calculator {
                 }
             }
             while(!operatorStack.isEmpty()){
-            topOperator = operatorStack.pop();
-            postfix.append(topOperator);
+                topOperator = operatorStack.pop();
+                postfix.append(topOperator);
             }
         return postfix;
         }
@@ -48,12 +47,12 @@ public class Calculator {
             for(char nextCharacter : postfix){
                 switch (nextCharacter){
                     case 'a': case 'b': case 'c': case 'd': case 'e':
-                        valueStack.push() //INPUT VALUE OF NEXTCHARACTER
+                        valueStack.push(nextCharacter) //NEED INPUT VALUE OF NEXTCHARACTER
                         break;
                     case '+': case '-': case '*': case '/': case '^':
                         operandTwo = valueStack.pop();
                         operandOne = valueStack.pop();
-                        result  = //INPUT OPERATION OF NEXTCHARACTER AND OPERANDTWO AND OPERANDONE
+                        result  = //NEED INPUT OPERATION OF NEXTCHARACTER AND OPERANDTWO AND OPERANDONE
                         valueStack.push();
                         break;
                     default: break;
